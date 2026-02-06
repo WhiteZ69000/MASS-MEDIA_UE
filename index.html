@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UE em Crise: Desafios Contemporâneos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .eu-blue { background-color: #003399; }
+        .eu-yellow-text { color: #FFCC00; }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+
+        .status-dot {
+            height: 10px;
+            width: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fadeIn {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="text-slate-800">
+
+    <!-- Header / Navigation -->
+    <header class="eu-blue text-white sticky top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <svg width="40" height="40" viewBox="0 0 120 80" class="fill-current eu-yellow-text">
+                    <rect width="120" height="80" fill="#003399"/>
+                    <circle cx="60" cy="40" r="2" fill="#FFCC00" transform="translate(0,-20)"/>
+                    <g fill="#FFCC00">
+                        <circle cx="60" cy="20" r="2"/><circle cx="60" cy="60" r="2"/>
+                        <circle cx="40" cy="40" r="2"/><circle cx="80" cy="40" r="2"/>
+                        <circle cx="50" cy="23" r="2"/><circle cx="70" cy="23" r="2"/>
+                        <circle cx="50" cy="57" r="2"/><circle cx="70" cy="57" r="2"/>
+                        <circle cx="43" cy="30" r="2"/><circle cx="77" cy="30" r="2"/>
+                        <circle cx="43" cy="50" r="2"/><circle cx="77" cy="50" r="2"/>
+                    </g>
+                </svg>
+                <h1 class="text-xl font-bold tracking-tight">EU WATCH <span class="text-xs font-light block">Monitor de Crises</span></h1>
+            </div>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#dashboard" class="hover:text-amber-400 transition">Dashboard</a>
+                <a href="#conflitos" class="hover:text-amber-400 transition">Conflitos</a>
+                <a href="#economia" class="hover:text-amber-400 transition">Economia</a>
+                <a href="#migracao" class="hover:text-amber-400 transition">Migração</a>
+            </nav>
+            <!-- Redirecionamento para Euronews -->
+            <a href="https://pt.euronews.com/tag/uniao-europeia" target="_blank" class="text-xs bg-red-600 px-3 py-1 rounded-full animate-pulse flex items-center hover:bg-red-700 transition cursor-pointer">
+                <span class="status-dot bg-white"></span> LIVE UPDATES (EURONEWS)
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-white border-b border-slate-200">
+        <div class="container mx-auto px-4 py-12 md:py-20 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0 pr-0 md:pr-10">
+                <h2 class="text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                    A Europa num <span class="text-blue-700">Ponto de Inflexão</span>
+                </h2>
+                <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                    A União Europeia enfrenta o conjunto mais complexo de desafios desde a sua fundação. Da segurança energética à ascensão do populismo, analisamos os problemas que dominam as manchetes dos mass media.
+                </p>
+                <div class="flex space-x-4">
+                    <button onclick="scrollToSection('dashboard')" class="bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-800 transition shadow-md">Explorar Dashboard</button>
+                    <button class="border border-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-50 transition">Relatório 2024/25</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 relative">
+                <div class="bg-blue-100 rounded-2xl p-4 shadow-inner">
+                    <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=800" alt="Parlamento Europeu" class="rounded-xl shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Dashboard -->
+    <main id="dashboard" class="container mx-auto px-4 py-16">
+        <div class="flex items-center space-x-2 mb-10">
+            <div class="h-8 w-2 bg-blue-700"></div>
+            <h3 class="text-2xl font-bold">Principais Eixos de Instabilidade</h3>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Geopolítica -->
+            <div id="conflitos" class="news-card bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div class="text-red-500 mb-4 text-3xl"><i class="fas fa-shield-halved"></i></div>
+                <h4 class="text-xl font-bold mb-3">Segurança e Defesa</h4>
+                <p class="text-slate-600 text-sm mb-4">A guerra na Ucrânia forçou a UE a repensar a sua autonomia estratégica. O dilema entre o apoio militar e o medo de uma escalada nuclear domina o conselho.</p>
+                <ul class="text-xs space-y-2 mb-6 text-slate-500">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Rearmamento Alemão</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Adesão da Finlândia e Suécia</li>
+                    <li><i class="fas fa-clock text-amber-500 mr-2"></i> Fadiga de Guerra</li>
+                </ul>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-red-500 h-full w-[85%]"></div>
+                </div>
+                <p class="text-[10px] mt-2 text-slate-400 font-bold uppercase">Nível de Alerta: Crítico</p>
+            </div>
+
+            <!-- Card 2: Economia -->
+            <div id="economia" class="news-card bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div class="text-blue-600 mb-4 text-3xl"><i class="fas fa-chart-line"></i></div>
+                <h4 class="text-xl font-bold mb-3">Crise de Custo de Vida</h4>
+                <p class="text-slate-600 text-sm mb-4">Inflação, taxas de juro elevadas e a perda de competitividade face aos EUA e China. O "Motor Alemão" apresenta sinais de cansaço.</p>
+                <ul class="text-xs space-y-2 mb-6 text-slate-500">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Preços da Energia</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Crise na Indústria Automóvel</li>
+                    <li><i class="fas fa-clock text-amber-500 mr-2"></i> Novas Regras Fiscais</li>
+                </ul>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-blue-500 h-full w-[70%]"></div>
+                </div>
+                <p class="text-[10px] mt-2 text-slate-400 font-bold uppercase">Nível de Alerta: Elevado</p>
+            </div>
+
+            <!-- Card 3: Migração -->
+            <div id="migracao" class="news-card bg-white p-6 rounded-2xl shadow-sm border border-slate-100">
+                <div class="text-amber-500 mb-4 text-3xl"><i class="fas fa-people-arrows"></i></div>
+                <h4 class="text-xl font-bold mb-3">Pacto de Migração</h4>
+                <p class="text-slate-600 text-sm mb-4">O aumento das chegadas irregulares e a ascensão da extrema-direita em França, Holanda e Alemanha põem em causa o Espaço Schengen.</p>
+                <ul class="text-xs space-y-2 mb-6 text-slate-500">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Controlos de Fronteira Internos</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i> Acordos com Países Terceiros</li>
+                    <li><i class="fas fa-clock text-amber-500 mr-2"></i> Reforma do Sistema de Asilo</li>
+                </ul>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div class="bg-amber-500 h-full w-[92%]"></div>
+                </div>
+                <p class="text-[10px] mt-2 text-slate-400 font-bold uppercase">Nível de Alerta: Máximo</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- News Feed Simulation -->
+    <section class="bg-slate-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-end mb-10">
+                <div>
+                    <h3 class="text-3xl font-bold mb-2">Mass Media Live Feed</h3>
+                    <p class="text-slate-400">As notícias que estão a moldar o debate europeu hoje.</p>
+                </div>
+                <div class="text-sm font-mono text-blue-400" id="current-time">00:00:00</div>
+            </div>
+
+            <div id="news-container" class="space-y-4 max-h-[500px] overflow-y-auto pr-4 custom-scrollbar">
+                <!-- As notícias serão inseridas aqui via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Analysis / Tabs -->
+    <section class="container mx-auto px-4 py-20">
+        <div class="max-w-4xl mx-auto">
+            <h3 class="text-3xl font-bold text-center mb-12">Análise Profunda: O Futuro da União</h3>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="showAnalysis('clima')" class="analysis-btn px-6 py-2 rounded-full border border-blue-700 bg-blue-700 text-white transition">Transição Verde</button>
+                <button onclick="showAnalysis('populismo')" class="analysis-btn px-6 py-2 rounded-full border border-slate-200 hover:border-blue-700 transition">Populismo</button>
+                <button onclick="showAnalysis('alargamento')" class="analysis-btn px-6 py-2 rounded-full border border-slate-200 hover:border-blue-700 transition">Alargamento</button>
+            </div>
+
+            <div id="analysis-content" class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 min-h-[300px]">
+                <div id="clima-content" class="analysis-section">
+                    <h4 class="text-2xl font-bold mb-4 text-blue-900">O Dilema do Green Deal</h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        A UE ambiciona ser o primeiro continente neutro em carbono até 2050. No entanto, os protestos dos agricultores em toda a Europa e os custos energéticos para as famílias criaram um "retrocesso verde".
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 mt-6">
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-green-500">
+                            <span class="block font-bold text-green-700">-20%</span>
+                            <span class="text-xs text-slate-500">Emissões nos últimos 5 anos</span>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border-l-4 border-red-500">
+                            <span class="block font-bold text-red-700">+35%</span>
+                            <span class="text-xs text-slate-500">Custo médio da energia industrial</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="populismo-content" class="analysis-section hidden">
+                    <h4 class="text-2xl font-bold mb-4 text-blue-900">A Crise de Representatividade</h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        A ascensão de movimentos soberanistas em países fundadores (como a França de Le Pen ou a Alemanha do AfD) coloca em risco a integração europeia. O debate entre "Mais Europa" vs "Europa das Nações" nunca foi tão aceso.
+                    </p>
+                    <blockquote class="border-l-4 border-amber-500 pl-4 italic text-slate-700 my-4">
+                        "O centro político está a colapsar em várias capitais, dificultando decisões unânimes em Bruxelas."
+                    </blockquote>
+                </div>
+
+                <div id="alargamento-content" class="analysis-section hidden">
+                    <h4 class="text-2xl font-bold mb-4 text-blue-900">Novas Fronteiras: Ucrânia e Balcãs</h4>
+                    <p class="text-slate-600 leading-relaxed mb-4">
+                        Aceitar a Ucrânia e os países dos Balcãs Ocidentais é um imperativo geopolítico, mas um pesadelo institucional. Como reformar o sistema de votação e o orçamento da Política Agrícola Comum (PAC)?
+                    </p>
+                    <p class="text-sm text-blue-700 font-bold">Problema chave: O direito de veto dos Estados-membros.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-100 border-t border-slate-200 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-slate-500 text-sm mb-4">© 2026 EU WATCH - Monitorização Académica de Media</p>
+            <div class="flex justify-center space-x-6 text-slate-400">
+                <a href="#" class="hover:text-blue-700"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-blue-700"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-blue-700"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Lista expandida de notícias (Hot Topics 2024/2025/2026)
+        const newsItems = [
+            { source: "Le Monde", text: "França pressiona por mais tarifas sobre veículos elétricos chineses para proteger indústria local.", time: "há 2 min" },
+            { source: "Euronews", text: "UE prepara plano de contingência para possíveis novas tarifas comerciais dos EUA.", time: "há 12 min" },
+            { source: "The Guardian", text: "Orbán ameaça bloquear novo pacote de ajuda militar de 50 mil milhões à Ucrânia.", time: "há 25 min" },
+            { source: "Público", text: "Portugal entre os países que pedem flexibilização das regras do Pacto Ecológico na agricultura.", time: "há 38 min" },
+            { source: "El País", text: "Crise migratória nas Canárias: Espanha exige que a Frontex assuma patrulhamento marítimo imediato.", time: "há 55 min" },
+            { source: "Der Spiegel", text: "Volkswagen anuncia fecho histórico de fábricas na Alemanha devido a custos de energia e quebra na procura.", time: "há 1h" },
+            { source: "Corriere della Sera", text: "Meloni propõe 'Centros de Processamento' na Albânia como modelo para toda a União Europeia.", time: "há 2h" },
+            { source: "Euractiv", text: "IA Act entra em vigor: Bruxelas define as primeiras multas para gigantes tecnológicas por violação de ética.", time: "há 3h" },
+            { source: "Financial Times", text: "Investimento chinês na Europa cai para o nível mais baixo em uma década devido a restrições de segurança.", time: "há 4h" },
+            { source: "Politico", text: "A luta pelo Orçamento Europeu: Países do 'Norte Frugal' rejeitam aumento de contribuições para defesa.", time: "há 5h" },
+            { source: "BBC News", text: "Polónia reforça 'Muro de Aço' na fronteira com a Bielorrússia face a nova vaga de pressão migratória.", time: "há 6h" }
+        ];
+
+        function populateNews() {
+            const container = document.getElementById('news-container');
+            container.innerHTML = newsItems.map((item, index) => `
+                <div class="bg-slate-800 p-4 rounded-xl border-l-2 border-blue-500 flex justify-between items-center animate-fadeIn" style="animation-delay: ${index * 100}ms">
+                    <div>
+                        <span class="text-blue-400 font-bold text-xs uppercase tracking-widest">${item.source}</span>
+                        <p class="text-sm mt-1 text-slate-100">${item.text}</p>
+                    </div>
+                    <span class="text-[10px] text-slate-500 whitespace-nowrap ml-4 italic">${item.time}</span>
+                </div>
+            `).join('');
+        }
+
+        // Sistema de Tabs para Análise
+        function showAnalysis(id) {
+            document.querySelectorAll('.analysis-section').forEach(sec => sec.classList.add('hidden'));
+            document.getElementById(`${id}-content`).classList.remove('hidden');
+            
+            document.querySelectorAll('.analysis-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-700', 'text-white');
+                btn.classList.add('border-slate-200');
+            });
+            event.currentTarget.classList.add('bg-blue-700', 'text-white');
+            event.currentTarget.classList.remove('border-slate-200');
+        }
+
+        function updateTime() {
+            const now = new Date();
+            document.getElementById('current-time').innerText = now.toLocaleTimeString('pt-PT');
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.onload = () => {
+            populateNews();
+            setInterval(updateTime, 1000);
+            updateTime();
+        };
+    </script>
+</body>
+</html>
